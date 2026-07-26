@@ -23,7 +23,7 @@ spec:
     spec:
       containers:
       - name: mysql
-        image: mysql:7
+        image: mrmotam/mysql:v1
         env:
         - name: MYSQL_ROOT_PASSWORD
           valueFrom:
