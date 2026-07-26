@@ -1,0 +1,39 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: mysql
+  namespace: roboshop
+  labels:
+    project: roboshop
+    tier: db
+    component: mysql
+spec:
+  replicas: 3
+  selector:
+    matchLabels:
+      project: roboshop
+      tier: db
+      component: mysql
+  template:
+    metadata:
+      labels:
+        project: roboshop
+        tier: db
+        component: mysql
+    spec:
+      containers:
+      - name: mysql
+        image: mysql:7
+        env:
+        - name: MYSQL_ROOT_PASSWORD
+          valueFrom:
+            secretKeyRef:
+              name: mysql-sec
+              key: MYSQL_ROOT_PASSWORD
+        resources:
+          requests:
+            cpu: "250m"
+            memory: "256Mi"
+          limits:
+            cpu: "500m"
+            memory: "512Mi"
