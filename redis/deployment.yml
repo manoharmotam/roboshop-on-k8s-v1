@@ -1,0 +1,33 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: redis
+  namespace: roboshop
+  labels:
+    project: roboshop
+    tier: db
+    component: redis
+spec:
+  replicas: 3
+  selector:
+    matchLabels:
+      project: roboshop
+      tier: db
+      component: redis
+  template:
+    metadata:
+      labels:
+        project: roboshop
+        tier: db
+        component: redis
+    spec:
+      containers:
+      - name: redis
+        image: redis:7
+        resources:
+          requests:
+            cpu: "250m"
+            memory: "256Mi"
+          limits:
+            cpu: "500m"
+            memory: "512Mi"
