@@ -27,17 +27,19 @@ spec:
         - name: MONGO
           valueFrom:
             configMapKeyRef:
+              name: catalogue-cm
               key: MONGO
         - name: MONGO_URL
           valueFrom:
             configMapKeyRef:
+              name: catalogue-cm
               key: "MONGO_URL"
-        # resources:
-        #   requests:
-        #     cpu: "250m"
-        #     memory: '256Mi'
-        #   limits:
-        #     memory: "128Mi"
-        #     cpu: "500m"
+        resources:
+          requests:
+            cpu: "250m"
+            memory: '256Mi'
+          limits:
+            memory: "128Mi"
+            cpu: "500m"
         ports:
         - containerPort: 8080
