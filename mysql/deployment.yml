@@ -27,10 +27,7 @@ spec:
         args: ["--mysql-native-password=ON"]
         env:
         - name: MYSQL_ROOT_PASSWORD
-          valueFrom:
-            secretKeyRef:
-              name: mysql-sec
-              key: MYSQL_ROOT_PASSWORD
+          value: "RoboShop@1"
         # resources:
         #   requests:
         #     cpu: "250m"
