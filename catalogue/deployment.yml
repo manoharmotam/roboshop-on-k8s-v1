@@ -22,7 +22,7 @@ spec:
     spec:
       containers:
       - name: catalogue
-        image: <Image>
+        image: mrmotam:/catalogue:v1
         env:
         - name: MONGO
           valueFrom:
