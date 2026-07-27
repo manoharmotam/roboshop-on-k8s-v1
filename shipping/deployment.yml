@@ -24,6 +24,22 @@ spec:
       containers:
       - name: shipping
         image: mrmotam/shipping:v1
+        startupProbe:
+          httpGet:
+            path: /health
+            port: liveness-port
+          periodSeconds: 10
+          failureThreshold: 12
+        readinessProbe:
+          httpGet:
+            path: /health
+            port: liveness-port
+          periodSeconds: 10
+        livenessProbe:
+          httpGet:
+            path: /health
+            port: liveness-port
+          periodSeconds: 10
         env:
         - name: CART_ENDPOINT
           valueFrom:
@@ -43,4 +59,5 @@ spec:
         #     memory: "128Mi"
         #     cpu: "500m"
         ports:
-        - containerPort: 8080
+        - name: liveness-port
+          containerPort: 8080
