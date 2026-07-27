@@ -27,6 +27,8 @@ spec:
         envFrom:
         - configMapRef:
             name: payment-cm
+        - secretRef:
+            name: payment-sec
         startupProbe:
           httpGet:
             path: /health
