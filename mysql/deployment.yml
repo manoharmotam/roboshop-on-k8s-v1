@@ -24,6 +24,7 @@ spec:
       containers:
       - name: mysql
         image: mrmotam/mysql:v1
+        args: ["--mysql-native-password=ON"]
         env:
         - name: MYSQL_ROOT_PASSWORD
           valueFrom:
